@@ -10,9 +10,6 @@ Install from git using JitPack
 [![Release](https://jitpack.io/v/WintonCentre/winton-utils.svg)]
 (https://jitpack.io/#WintonCentre/winton-utils)
 
-[![Release](https://jitpack.io/v/User/Repo.svg)]
-(https://jitpack.io/#User/Repo)
-
 Add at the end of repositories in `project.clj`
 ```clj
 :repositories [["jitpack" "https://jitpack.io"]]
