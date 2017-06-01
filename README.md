@@ -7,15 +7,17 @@ A Clojure utility library for:
 ### Installation (Leiningen)
 
 Install from git using JitPack
+[![Release](https://jitpack.io/v/User/Repo.svg)]
+(https://jitpack.io/#User/Repo)
 
 Add at the end of repositories in `project.clj`
 ```clj
 :repositories [["jitpack" "https://jitpack.io"]]
 ```
 
-Add the dependency
+Add the dependency, for example:
 ```clj
-:dependencies [[com.github.WintonCentre/winton-utils "winton-utils-0.0.1"]]
+:dependencies [[com.github.WintonCentre/winton-utils "winton-utils-v0.0.1"]]
 ```
 
 ## Usage
