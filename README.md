@@ -16,7 +16,7 @@ Add at the end of repositories in `project.clj`
 
 Add the dependency, for example:
 ```clj
-:dependencies [[com.github.WintonCentre/winton-utils "winton-utils-v0.0.1"]]
+:dependencies [[com.github.WintonCentre/winton-utils "0.0.2"]]
 ```
 
 ## Usage
