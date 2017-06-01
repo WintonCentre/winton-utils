@@ -7,6 +7,9 @@ A Clojure utility library for:
 ### Installation (Leiningen)
 
 Install from git using JitPack
+[![Release](https://jitpack.io/v/WintonCentre/winton-utils.svg)]
+(https://jitpack.io/#WintonCentre/winton-utils)
+
 [![Release](https://jitpack.io/v/User/Repo.svg)]
 (https://jitpack.io/#User/Repo)
 
