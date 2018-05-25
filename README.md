@@ -3,29 +3,24 @@
 A Clojure utility library for:
 
 * Safe number parsing
+* map-of-vectors transposed to vector-of-maps
+* functions to use in transducers working over data-frames
 
-### Installation (Leiningen)
-
-Install from git using JitPack
-[![Release](https://jitpack.io/v/WintonCentre/winton-utils.svg)](https://jitpack.io/#WintonCentre/winton-utils)
-
-Add at the end of repositories in `project.clj`
-```clj
-:repositories [["jitpack" "https://jitpack.io"]]
-```
+## Installation (Leiningen)
+`lein install`
 
 Add the dependency, for example:
 ```clj
-:dependencies [[com.github.WintonCentre/winton-utils "0.0.2"]]
+:dependencies [[com.github.WintonCentre/winton-utils "0.2.0"]]
 ```
+
+## Testing
+
+`lein test`
 
 ## Usage
 
-```clj
-(ns your-ns
-    (:require [number/conversions :refer [parse-number parse-int])
-)
-```
+See tests
 
 ## License
 
