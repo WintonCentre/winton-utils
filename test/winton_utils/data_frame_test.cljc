@@ -1,6 +1,7 @@
 (ns winton-utils.data-frame-test
-  (:require [clojure.test :refer :all]
+  (:require [clojure.test :refer [deftest is testing]]
             [winton-utils.data-frame :refer [map-of-vs->v-of-maps
+                                             v-of-maps->map-of-vs
                                              cell-apply
                                              cell-update
                                              cell-sums
@@ -9,12 +10,22 @@
                                              cell-binary-seq]]
             ))
 
-(deftest transposing
+(deftest transposing1
 
   (testing "map-of-vectors transposed to vector-of-maps"
 
-    (is (= (map-of-vs->v-of-maps {:a [0 1 2] :b [10 11 12]}) [{:a 0 :b 10} {:a 1 :b 11} {:a 2 :b 12}]))
+    (is (= (map-of-vs->v-of-maps {:a [0 1 2] :b [10 11 12]})
+           [{:a 0 :b 10} {:a 1 :b 11} {:a 2 :b 12}]))
     ))
+
+(deftest transposing2
+  (testing "vector-of-maps transposed to map-of-vectors"
+
+       (is (= {:a [0 1 2] :b [10 11 12]}
+              (v-of-maps->map-of-vs [{:a 0 :b 10} {:a 1 :b 11} {:a 2 :b 12}])
+              ))
+       )
+  )
 
 (deftest transducer-helpers
   (testing "functions to use in transducers working over data-frames"

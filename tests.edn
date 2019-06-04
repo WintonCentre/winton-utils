@@ -1,0 +1,13 @@
+#kaocha/v1
+    {:tests [{:id :unit-clj}
+             {:id            :unit-cljs
+              :type          :kaocha.type/cljs
+              ;:source-paths  ["src"]
+              :test-paths    ["test"]
+              ;; :cljs/timeout 10000                        ; 10 seconds, the default
+              ;; :cljs/repl-env cljs.repl.node/repl-env     ; node is the default
+              :cljs/repl-env cljs.repl.browser/repl-env
+              }]
+     #_#_:plugins [:kaocha.plugin/cloverage]                  ; clj only?
+     }
+

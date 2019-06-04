@@ -1,7 +1,7 @@
 (ns winton-utils.collections-test
-  (:require [clojure.test :refer :all]
-            [winton-utils.collections :refer [sort-permutation
-                                              sort-by-permutation]]))
+  (:require [winton-utils.collections :refer [sort-permutation
+                                              sort-by-permutation]]
+            [clojure.test :refer [deftest is testing]]))
 
 (deftest sort-permutations
 

@@ -1,5 +1,5 @@
 (ns winton-utils.number.conversions-test
-  (require [clojure.test :refer :all]
+  (:require [clojure.test :refer [deftest testing is]]
            [winton-utils.number.conversions :refer [parse-number parse-integer]]))
 
 (deftest parsing-integers

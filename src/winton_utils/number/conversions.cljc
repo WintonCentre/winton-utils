@@ -8,7 +8,7 @@
     (read-string si)))
 
 
-(comment                                                    ; parse-integer tests
+#_(comment                                                    ; parse-integer tests
 
   ;; a cljc way to read-integers
   (parse-integer "12345")
@@ -37,7 +37,7 @@
     (read-string sd)))
 
 
-(comment                                                   ; parse-number tests
+#_(comment                                                   ; parse-number tests
 
   (parse-number "")
   => nil

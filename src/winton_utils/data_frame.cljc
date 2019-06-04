@@ -10,6 +10,46 @@
         (apply map vector (vals k-vs))))
 
 
+(defn v-of-maps->map-of-vs
+  "Transpose a vector of maps to a map of vectors.
+  Resulting vector will be truncated to the length of the shortest input vector.
+  e.g. [{:a 0 :b 10} {:a 1 :b 11} {:a 2 :b 12}] -> {:a [0 1 2] :b [10 11 12]}"
+  [ms]
+  (let [ks (into #{} (mapcat keys ms))
+        vs (mapv (apply juxt ks) ms)]
+    (into {} (map-indexed
+               (fn [i k] [k (map (fn [val] (val i)) vs)])
+               ks))
+    )
+  )
+
+
+
+(comment
+  ;; wip
+
+  (defn step [vms [k vs]]
+    (map-indexed
+      (fn [i m]
+        (update m k (fn [old-v] (into [] (conj old-v (k m))))))
+      vms))
+
+  (comment
+    (step [] [:a [1 2 3]])
+    ;=> ({:a [1]} {:a [2]} {:a [3]})
+
+    (step {} [:a [1 2 3]])
+
+    (reduce step {} [[:a [1 2 3 4]] [:b [2 3 4 5]]])
+
+    (v-of-maps->map-of-vs {:a [1 2 3 4] :b [2 3 4 5]})
+    ;=> [{:a 1 :b 2} {:a 2 :b 3} {:a 3 :b 4} {:a 4 :b 5}]
+
+    )
+
+  )
+
+
 ;;
 ;; Implement a set of functions which can be used to make transducers that operate on data-frames.
 ;;
