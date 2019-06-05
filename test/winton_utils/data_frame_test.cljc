@@ -16,16 +16,25 @@
 
     (is (= (map-of-vs->v-of-maps {:a [0 1 2] :b [10 11 12]})
            [{:a 0 :b 10} {:a 1 :b 11} {:a 2 :b 12}]))
+    (is (= (map-of-vs->v-of-maps {}) []))
+    (is (= (map-of-vs->v-of-maps nil) nil))
+
     ))
 
 (deftest transposing2
   (testing "vector-of-maps transposed to map-of-vectors"
 
-       (is (= {:a [0 1 2] :b [10 11 12]}
-              (v-of-maps->map-of-vs [{:a 0 :b 10} {:a 1 :b 11} {:a 2 :b 12}])
-              ))
-       )
-  )
+    (is (= {:a [0 1 2] :b [10 11 12]}
+           (v-of-maps->map-of-vs [{:a 0 :b 10} {:a 1 :b 11} {:a 2 :b 12}])
+           ))
+    (is (= {}
+           (v-of-maps->map-of-vs [])))
+    (is (= {}
+           (v-of-maps->map-of-vs [{}])))
+    (is (= nil
+           (v-of-maps->map-of-vs nil))
+        )
+    ))
 
 (deftest transducer-helpers
   (testing "functions to use in transducers working over data-frames"

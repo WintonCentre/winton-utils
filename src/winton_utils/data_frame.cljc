@@ -5,9 +5,16 @@
   Resulting vector will be truncated to the length of the shortest input vector.
   e.g. {:a [0 1 2] :b [10 11 12]} -> [{:a 0 :b 10} {:a 1 :b 11} {:a 2 :b 12}]"
   [k-vs]
-  (mapv (fn [vs]
-          (into {} (map-indexed (fn [k v] [(nth (keys k-vs) k) v]) vs)))
-        (apply map vector (vals k-vs))))
+  (cond
+    (seq k-vs)
+    (mapv (fn [vs]
+            (into {} (map-indexed (fn [k v] [(nth (keys k-vs) k) v]) vs)))
+          (apply map vector (vals k-vs)))
+    (nil? k-vs)
+    nil
+
+    :else
+    []))
 
 
 (defn v-of-maps->map-of-vs
@@ -15,12 +22,13 @@
   Resulting vector will be truncated to the length of the shortest input vector.
   e.g. [{:a 0 :b 10} {:a 1 :b 11} {:a 2 :b 12}] -> {:a [0 1 2] :b [10 11 12]}"
   [ms]
-  (let [ks (into #{} (mapcat keys ms))
-        vs (mapv (apply juxt ks) ms)]
-    (into {} (map-indexed
-               (fn [i k] [k (map (fn [val] (val i)) vs)])
-               ks))
-    )
+  (when ms
+    (let [ks (into #{} (mapcat keys ms))
+          vs (if (seq ks) (mapv (apply juxt ks) ms) [])]
+      (into {} (map-indexed
+                 (fn [i k] [k (map (fn [val] (val i)) vs)])
+                 ks))
+      ))
   )
 
 
