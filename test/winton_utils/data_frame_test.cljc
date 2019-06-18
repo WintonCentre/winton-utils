@@ -14,11 +14,15 @@
 
   (testing "map-of-vectors transposed to vector-of-maps"
 
-    (is (= (map-of-vs->v-of-maps {:a [0 1 2] :b [10 11 12]})
-           [{:a 0 :b 10} {:a 1 :b 11} {:a 2 :b 12}]))
-    (is (= (map-of-vs->v-of-maps {}) []))
-    (is (= (map-of-vs->v-of-maps nil) nil))
+    (is (= [{:a 0 :b 10} {:a 1 :b 11} {:a 2 :b 12}]
+           (map-of-vs->v-of-maps {:a [0 1 2] :b [10 11 12]})))
+    (is (= [] (map-of-vs->v-of-maps {})))
+    (is (nil? (map-of-vs->v-of-maps nil)))
 
+    (is (= [] (map-of-vs->v-of-maps {:a [] :b []})))
+
+    (map-of-vs->v-of-maps {:a [1 2 3] :b [4 5] :c [6 7 8]})
+    ;=> [{:a 1, :b 4, :c 6} {:a 2, :b 5, :c 7}]
     ))
 
 (deftest transposing2
